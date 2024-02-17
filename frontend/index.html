@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div id="imported-content"></div>
+    <script>
+      fetch("header.html")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text();
+        })
+        .then((html) => {
+          document.getElementById("imported-content").innerHTML = html;
+        })
+        .catch((error) => {
+          console.error("There was a problem fetching the HTML:", error);
+        });
+    </script>
+  </body>
+</html>
